@@ -48,8 +48,8 @@ def ejer_5():
     Escribir un programa que pregunte al usuario por el número de horas trabajadas y
     el coste por hora. Después debe mostrar por pantalla la paga que le corresponde
     """
-    horas = input("Introduzca horas trabajadas: ")
-    coste = int(input("Introduzca coste de la hora: "))
+    horas = int(input("Introduzca horas trabajadas: "))
+    coste = float(input("Introduzca coste de la hora: "))
     print(f"Le corresponde al trabajador una paga de {coste*horas} euros")
 
 
