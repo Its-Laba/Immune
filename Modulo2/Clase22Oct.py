@@ -145,7 +145,7 @@ def ejer_4_2():
     nombre_completo = input("Introduzca su nombre completo: ")
     print(nombre_completo.lower())
     print(nombre_completo.upper())
-    print(nombre_completo.capitalize())
+    print(nombre_completo.title())
 
 
 def ejer_5_2():
