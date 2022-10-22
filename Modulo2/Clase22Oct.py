@@ -89,7 +89,7 @@ def ejer_8():
     n = int(input("Introduzca el número n: "))
     m = int(input("Introduzca el número m: "))
     c = n//m
-    r = n%m
+    r = n % m
     print(f"{n}/{m} = {c} con resto {r}")
 
 
