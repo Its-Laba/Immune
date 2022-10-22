@@ -124,7 +124,6 @@ def ejer_3_2():
     Escribir un programa que pida al usuario que introduzca una frase en la consola y
     una vocal en minúscula, y después muestre por pantalla la misma frase pero con la
     vocal introducida en mayúscula.
-    :return:
     """
     frase = input("Introduzca una frase: ")
     vocal = input("Introduzca una vocal en minúscula: ")
@@ -140,7 +139,6 @@ def ejer_4_2():
     todas las letras minúsculas, otra con todas las letras mayúsculas y otra solo con la
     primera letra del nombre y de los apellidos en mayúscula.El usuario puede
     introducir su nombre combinando mayúsculas y minúsculas como quiera.
-    :return:
     """
     nombre_completo = input("Introduzca su nombre completo: ")
     print(nombre_completo.lower())
@@ -154,7 +152,6 @@ def ejer_5_2():
     Escribir un programa que pregunte al usuario una cantidad a invertir, el interés
     anual y el número de años, y muestre por pantalla el capital obtenido en la
     inversión.
-    :return:
     """
     inversion = float(input("Introduzca la cantidad a invertir: "))
     interes = float(input("Introduzca el interés anual (en porcentaje): "))
@@ -172,7 +169,6 @@ def ejer_6_2():
     cada paquete a demanda. Cada payaso pesa 112g y cada muñeca 75g.
     Escribe un programa que lea el número de payasos y muñecas vendidos en el último pedido y
     calcule el peso total del paquete que será enviado.
-    :return:
     """
     n_payasos = int(input("Introduzca el número de payasos vendidos: "))
     n_dolls = int(input("Introduzca el número de muñecas vendidos: "))
@@ -190,7 +186,6 @@ def ejer_7_2():
     introducida por el usuario. Después el programa debe calcular y mostrar por
     pantalla la cantidad de ahorros tras el primer, segundo y tercer años. Redondear
     cada cantidad a dos decimales.
-    :return:
     """
     dinero_ahorros = float(input("Introduzca cantidad de dinero que quiere depositar en la cuenta de ahorros: "))
     dinero_ahorros_1 = dinero_ahorros * 1.04
@@ -209,7 +204,6 @@ def ejer_8_2():
     barras vendidas que no son del día. Después el programa debe mostrar el precio
     habitual de una barra de pan, el descuento que se le hace por no ser fresca y el
     coste final total
-    :return:
     """
     n_pan_nodia = int(input("Introduzca el número de panes que no son del dia vendidos: "))
     valor = n_pan_nodia * 3.49
@@ -227,7 +221,6 @@ def ejer_9_2():
     palabra “HOLA”, tendrá que ser un número entre 0 y 4 ) y almacenar este número en
     una variable llamada índice.
     Mostrar en pantalla el carácter del texto ubicado en la posición dada por índice.
-    :return:
     """
     texto = input("Introduzca un texto: ")
     index = int(input(f"Introduzca un entero positivo menor que {len(texto)}: "))
@@ -242,7 +235,6 @@ def ejer_10_2():
     últimos cuatro el año (DDMMAAAA). Este dato debe guardarse en una variable con
     tipo int(númeroentero). Finalmente, mostrar al usuario la fecha con el formato
     DD / MM / AAAA
-    :return:
     """
     fecha = int(input("Introduzca la fecha en el formato (DDMMAAAA): "))
     dia = fecha//1000000
@@ -256,7 +248,6 @@ def ejer_11_2():
     Ejercicio 11
     Escriba un programa que solicite al usuario el ingreso de una temperatura en escala
     Fahrenheit (debe permitir decimales) y le muestre el equivalente en grados Celsius.
-    :return:
     """
     faherenheit = float(input("Introduzca los grados en Fahrenheit: "))
     celsius = (5/9) * (faherenheit - 32)
