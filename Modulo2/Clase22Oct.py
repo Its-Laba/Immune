@@ -208,7 +208,7 @@ def ejer_8_2():
     n_pan_nodia = int(input("Introduzca el número de panes que no son del dia vendidos: "))
     valor = n_pan_nodia * 3.49
     descuento = valor * 0.6
-    print(f"{valor} - {descuento} = {valor * 0.6}")
+    print(f"{valor} - {descuento} = {valor * 0.4}")
 
 
 def ejer_9_2():
@@ -255,4 +255,4 @@ def ejer_11_2():
 
 
 if __name__ == '__main__':
-    ejer_10_2()
+    ejer_7_2()
