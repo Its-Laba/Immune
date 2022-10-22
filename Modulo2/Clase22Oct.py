@@ -102,7 +102,7 @@ def ejer_1_2():
     número de letras que tienen el nombre
     """
     nombre = input("Introduzca su nombre: ")
-    print(f"{nombre} tiene {len(nombre)} letras")
+    print(f"{nombre.upper()} tiene {len(nombre)} letras")
 
 
 def ejer_2_2():
@@ -244,11 +244,10 @@ def ejer_10_2():
     DD / MM / AAAA
     :return:
     """
-    date = int(input("Introduzca la fecha en el formato (DDMMAAAA): "))
-    fecha = str(date)
-    dia = fecha[:2]
-    mes = fecha[2:4]
-    year = fecha[4:]
+    fecha = int(input("Introduzca la fecha en el formato (DDMMAAAA): "))
+    dia = fecha//1000000
+    mes = (fecha//10000) % 100
+    year = fecha % 10000
     print(f"{dia} / {mes} / {year}")
 
 
