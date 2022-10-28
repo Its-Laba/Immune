@@ -119,7 +119,7 @@ def ejer_7():
     """
     nombre = input("Introduzca nombre:\t")
     hombre = input("Introduzca sexo: (M/F)\t")
-    if hombre.__eq__("M"):
+    if hombre.upper().__eq__("M"):
         hombre = True
     else:
         hombre = False
@@ -131,5 +131,90 @@ def ejer_7():
         print("Pertenece al grupo B")
 
 
+
+def reto_if():
+    """
+    RETO IF
+    Se debe comenzar por solicitar al usuario que ingrese la fecha actual en formato
+    "día, DD/MM", donde [día] es un día de la semana, DD es el número de día y MM es
+    el número de mes. Si el usuario ingresa un día de la semana inexistente o una
+    fecha cuyo día supere el número 31 o el mes supere el número 12, finalizará el
+    programa indicando que se produjo un error. Debe permitirse que ingrese el día
+    de la semana en minúsculas o mayúsculas indistintamente. Como precondición se
+    tiene que lo ingresado por el usuario tendrá la forma <[alfanumérico],
+    [numérico]/[numérico]>.
+    Una vez indicada la fecha, el usuario necesita poder indicar si ese día se tomaron
+    exámenes, pero eso sólo si se trata de los niveles inicial, intermedio o avanzado, ya
+    que las prácticas habladas y el inglés para viajeros no tienen exámenes. Si hubo
+    exámenes, el usuario ingresará cuántos alumnos aprobaron y cuántos no, y el
+    programa le mostrará el porcentaje de aprobados.
+    Si el día fue el correspondiente a práctica hablada, el usuario deberá ingresar el
+    porcentaje de asistencia a clase y el programa le indicará "asistió la mayoría" en
+    caso de que la asistencia sea mayor al 50% o "no asistió la mayoría" si no es así.
+    Si se trata del inglés para viajeros y la fecha actual corresponde al día 1 del mes 1 o
+    del mes 7, se deberá imprimir "Comienzo de nuevo ciclo" y solicitar al usuario que
+    ingrese la cantidad de alumnos del nuevo ciclo y el precio en € por cada alumno,
+    para luego imprimir el ingreso total en €
+    """
+    fecha = input("Introduzca dia de la semana en formato (dia, DD/MM):\t ")
+    dia_letra = fecha[:fecha.find(",")]
+    dia_num = fecha[fecha.find(",")+1: fecha.find("/")].strip()
+    mes = fecha[fecha.find("/")+1:]
+
+    if not (dia_letra.isalnum() and dia_num.isnumeric() and mes.isnumeric()):
+        print("El formato no es valido debe ser: <[alfanumérico], [numérico]/[numérico]>.")
+        exit()
+
+    if int(dia_num) < 0 or int(mes) < 0:
+        print("la fecha no puede ser negativa.")
+        exit()
+
+    if int(dia_num) > 31:
+        print("ERROR: El día no puede exceder de 31.")
+        exit()
+
+    if int(mes) > 12:
+        print("ERROR: El mes no puede exceder de 12.")
+        exit()
+
+    if not (dia_letra.lower().__eq__("lunes") or dia_letra.lower().__eq__("martes")
+            or dia_letra.lower().__eq__("miércoles") or dia_letra.lower().__eq__("jueves")
+            or dia_letra.lower().__eq__("viernes")):
+        print("ERROR: dia de la semana invalido.")
+        exit()
+
+    tipo = input("Introduzca tipo de clase:\n"
+                 "1. Inicial \n"
+                 "2. Intermedio\n"
+                 "3. Avanzado\n"
+                 "4. Práctica Hablada\n"
+                 "5. Inglés Para Viajeros\n")
+
+    if int(tipo) < 4:
+        if input("¿Ha Habido Examen? (Y/N)\n").lower().__eq__("y"):
+            aprobados = int(input("Introduzca el número de aprobados:\t"))
+            suspensos = int(input("Introduzca el número de suspensos:\t"))
+            print(f"El porcentaje de aprobados es del {aprobados/(aprobados+suspensos)*100}%")
+
+    elif int(tipo) == 4:
+        asistencia = input("Introduzca el porcentaje de asistencia:\t")
+        if asistencia.find("%") < 0:
+            asistencia = float(asistencia) * 100
+        else:
+            asistencia = float(asistencia.strip().removesuffix("%"))
+        if asistencia > 50:
+            print("Asistió la mayoria.")
+        else:
+            print("No asistió la mayoria.")
+
+    elif int(tipo) == 5:
+        if int(dia_num) == 1 and (int(mes) == 1 or int(mes) == 7):
+            print("Comienzo de nuevo ciclo.")
+        alumnos = int(input("Introduzca el número de alumnos:\t"))
+        precio = float(input("Introduzca el precio por alumno:\t"))
+
+        print(f"El coste es igual a {round(alumnos * precio, 2)}$")
+
+
 if __name__ == '__main__':
-    ejer_6()
+    reto_if()
