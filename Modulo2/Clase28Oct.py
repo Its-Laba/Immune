@@ -161,7 +161,8 @@ def reto_if():
     dia_num = fecha[fecha.find(",")+1: fecha.find("/")].strip()
     mes = fecha[fecha.find("/")+1:]
     tipo = -1
-    #Caso Error 1
+
+    # Caso Error 1
     if not (dia_letra.isalnum() and dia_num.isnumeric() and mes.isnumeric()):
         print("El formato no es valido debe ser: <[alfanumérico], [numérico]/[numérico]>.")
         exit()
@@ -250,5 +251,137 @@ def reto_if():
         print(f"El coste es igual a {round(alumnos * precio, 2)}$")
 
 
+def ejer_1_while():
+    """
+    Ejercicio 1
+    Crea una aplicación que pida un número y calcule su factorial (El factorial de un
+    número es el producto de todos los enteros entre 1 y el propio número y se
+    representa por el número seguido de un signo de exclamación. Por ejemplo 5! =
+    1x2x3x4x5=120).
+    """
+    num = -1
+    while num < 0:
+        num = input("Introduce un número positivo:\t")
+    aux = num
+    fact = num
+    while aux != 1:
+        aux = aux - 1
+        fact = fact * aux
+
+    print(f"El factorial de {num} es: {fact}")
+
+
+def ejer_2_while():
+    """
+    Ejercicio 2
+    Algoritmo que pida números hasta que se introduzca un cero. Debe imprimir la
+    suma y la media de todos los números introducidos.
+    """
+    num = -1
+    cont = 0
+    suma = 0
+    while num != 0:
+        num = input("Introduzca un número entero:\t")
+        if num.isnumeric():
+            num = int(num)
+            suma = suma + num
+            cont = cont + 1
+        else:
+            print("ERROR: Número no valido")
+
+    print(f"La suma de los números introducidos es: {suma}\n"
+          f"Su media es: {suma/cont}")
+
+
+def ejer_3_while():
+    """
+    Ejercicio 3
+    Algoritmo que pida caracteres e imprima ‘VOCAL’ si son vocales y ‘NO VOCAL’ en
+    caso contrario, el programa termina cuando se introduce un espacio
+    """
+    espacio = False
+    while not espacio:
+        letra = input("Introduzca letra")
+        if letra.isspace() or len(letra) != 1:
+            print("Salida de programa")
+            espacio = not espacio
+        else:
+            letra = letra.lower()
+            if (letra.__eq__("a") or letra.__eq__("e") or letra.__eq__("i")
+                    or letra.__eq__("o") or letra.__eq__("u")):
+                print("VOCAL")
+            else:
+                print("NO VOCAL")
+
+
+def ejer_5_while():
+    """
+    Ejercicio 5
+    Una persona se encuentra en el kilómetro 70 de una carretera, otra se encuentra en
+    el km 150, los coches tienen sentido opuesto y tienen la misma velocidad. Realizar
+    un programa para determinar en qué kilómetro de esa carretera se encontrarán.
+    """
+    v = int(input("Introduzca Velocidad: "))
+    iteracion = 0
+    i = 0
+    road = list([])
+    road.append("o")
+    while i != 150-72:
+        road.append("-")
+        i = i + 1
+    road.append("x")
+    carretera = "".join(road)
+    print(carretera)
+    puntero_o = v
+    puntero_x = len(road) - v - 1
+    while len(road)/2 > puntero_o:
+        iteracion = iteracion + 1
+        i = 0
+        while i != puntero_o:
+            i = i + 1
+            road.pop(i)
+            road.insert(i, "o")
+
+        i = len(road)
+        while i != puntero_x:
+            i = i - 1
+            road.pop(i)
+            road.insert(i, "x")
+
+        print("".join(road))
+        puntero_o = puntero_o + v
+        puntero_x = puntero_x - v
+
+    print(f"Se encontraron en el km {iteracion*v + 70}")
+
+
+def ejer_5_for():
+    """
+    Ejercicio 5
+    Escribir un programa que pregunte al usuario una cantidad a invertir, el interés
+    anual y el número de años, y muestre por pantalla el capital obtenido en la
+    inversión cada año que dura la inversión
+    """
+    inversion = float(input("Introduzca cantidad a invertir: "))
+    interes = float(input("Introduzca interés anual: "))
+    interes = interes / 100
+    years = int(input("Introduzca el número de años: "))
+    for i in range(years):
+        print(f"Año número {i+1}: {round((i+1+interes) * inversion, 2)}")
+
+
+def ejer_6_for():
+    """
+    Ejercicio 6
+    Escribir un programa que pida al usuario una palabra y luego muestre por pantalla
+    una a una las letras de la palabra introducida empezando por la última.
+    """
+    palabra = input("Introduzca palabra:\n")
+    res = ""
+    for i in range(len(palabra)-1, -1, -1):
+        res = res.join(palabra[i])
+    print(res)
+
+
 if __name__ == '__main__':
-    reto_if()
+    ejer_6_for()
