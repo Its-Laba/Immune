@@ -160,58 +160,92 @@ def reto_if():
     dia_letra = fecha[:fecha.find(",")]
     dia_num = fecha[fecha.find(",")+1: fecha.find("/")].strip()
     mes = fecha[fecha.find("/")+1:]
-
+    tipo = -1
+    #Caso Error 1
     if not (dia_letra.isalnum() and dia_num.isnumeric() and mes.isnumeric()):
         print("El formato no es valido debe ser: <[alfanumérico], [numérico]/[numérico]>.")
         exit()
-
+    # Caso Error 2
     if int(dia_num) < 0 or int(mes) < 0:
         print("la fecha no puede ser negativa.")
         exit()
-
+    # Caso Error 3
     if int(dia_num) > 31:
         print("ERROR: El día no puede exceder de 31.")
         exit()
-
+    # Caso Error 4
     if int(mes) > 12:
         print("ERROR: El mes no puede exceder de 12.")
         exit()
-
+    # Caso Error 5
+    if int(dia_num) > 29 and int(mes) == 2:
+        print("ERROR: Febrero no puede tener mas de 29 dias.")
+        exit()
+    # Caso Error 6
+    if int(dia_num) == 31 and ((int(mes) % 2 == 0 and int(mes) <= 7) or (int(mes) >= 8 and int(mes) % 2 == 1)):
+        print("ERROR: Mes no tiene 31 días")
+        exit()
+    # Caso Error 7
     if not (dia_letra.lower().__eq__("lunes") or dia_letra.lower().__eq__("martes")
             or dia_letra.lower().__eq__("miércoles") or dia_letra.lower().__eq__("jueves")
             or dia_letra.lower().__eq__("viernes")):
         print("ERROR: dia de la semana invalido.")
         exit()
 
-    tipo = input("Introduzca tipo de clase:\n"
-                 "1. Inicial \n"
-                 "2. Intermedio\n"
-                 "3. Avanzado\n"
-                 "4. Práctica Hablada\n"
-                 "5. Inglés Para Viajeros\n")
+    if dia_letra.lower().__eq__("lunes") or dia_letra.lower().__eq__("martes") or dia_letra.lower().__eq__("miércoles"):
+        tipo = 1
+    if dia_letra.lower().__eq__("jueves"):
+        tipo = 2
+    if dia_letra.lower().__eq__("viernes"):
+        tipo = 3
 
-    if int(tipo) < 4:
+    if tipo == 1:
         if input("¿Ha Habido Examen? (Y/N)\n").lower().__eq__("y"):
-            aprobados = int(input("Introduzca el número de aprobados:\t"))
-            suspensos = int(input("Introduzca el número de suspensos:\t"))
+            aprobados = input("Introduzca el número de aprobados:\t")
+            suspensos = input("Introduzca el número de suspensos:\t")
+            # Caso Error 9
+            if not (aprobados.isnumeric() and suspensos.isnumeric()):
+                print("ERROR: formato incorrecto.")
+                exit()
+            aprobados = int(aprobados)
+            suspensos = int(suspensos)
             print(f"El porcentaje de aprobados es del {aprobados/(aprobados+suspensos)*100}%")
 
-    elif int(tipo) == 4:
+    elif tipo == 2:
         asistencia = input("Introduzca el porcentaje de asistencia:\t")
         if asistencia.find("%") < 0:
+
+            # Caso Error 10
+            if not (asistencia.isdecimal() or asistencia.isnumeric()):
+                print("ERROR: formato incorrecto.")
+                exit()
+
             asistencia = float(asistencia) * 100
         else:
-            asistencia = float(asistencia.strip().removesuffix("%"))
+            asistencia = asistencia.strip().removesuffix("%")
+
+            # Caso Error 10
+            if not (asistencia.isdecimal() or asistencia.isnumeric()):
+                print("ERROR: formato incorrecto.")
+                exit()
         if asistencia > 50:
             print("Asistió la mayoria.")
         else:
             print("No asistió la mayoria.")
 
-    elif int(tipo) == 5:
+    elif tipo == 3:
         if int(dia_num) == 1 and (int(mes) == 1 or int(mes) == 7):
             print("Comienzo de nuevo ciclo.")
-        alumnos = int(input("Introduzca el número de alumnos:\t"))
-        precio = float(input("Introduzca el precio por alumno:\t"))
+        alumnos = input("Introduzca el número de alumnos:\t")
+        precio = input("Introduzca el precio por alumno:\t")
+
+        # Caso Error 11
+        if not (alumnos.isnumeric() and (precio.isnumeric() or precio.isdecimal())):
+            print("ERROR: formato incorrecto.")
+            exit()
+
+        alumnos = int(alumnos)
+        precio = float(precio)
 
         print(f"El coste es igual a {round(alumnos * precio, 2)}$")
 
