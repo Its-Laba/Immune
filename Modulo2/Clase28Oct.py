@@ -95,17 +95,16 @@ def ejer_6():
     tomate que están en todas las pizzas. Al final se debe mostrar por pantalla si la pizza
     elegida es vegetariana o no y todos los ingredientes que lleva.
     """
-    vegetariana = input("¿Quiere una pizza vegetariana? (Y/N)\n")
-    if vegetariana.__eq__("Y"):
+    if input("¿Quiere una pizza vegetariana? (Y/N)\n").__eq__("Y"):
         topping = input("Elija ingrediente para su pizza:\n"
                         "Pimiento\n"
-                        "Tofu")
+                        "Tofu\n")
         print(f"Pizza Vegetariana con {topping}")
     else:
         topping = input("Elija ingrediente para su pizza:\n"
                         "Peperoni\n"
                         "Jamón\n"
-                        "Salmón")
+                        "Salmón\n")
         print(f"Pizza No Vegetariana con {topping}")
 
 
@@ -133,4 +132,4 @@ def ejer_7():
 
 
 if __name__ == '__main__':
-    ejer_7()
+    ejer_6()
