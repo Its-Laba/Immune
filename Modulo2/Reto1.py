@@ -86,7 +86,7 @@ def buscar_aplicacion():
 
 
 def deshacer():
-    if type(Modulo2.Reto1.last_pass) == int:
+    if Modulo2.Reto1.last_pass is None:
         print("No ha insertado ninguna contraseña nueva.")
     else:
         index = passwords.index(Modulo2.Reto1.last_pass)
