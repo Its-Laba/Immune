@@ -131,7 +131,6 @@ def ejer_7():
         print("Pertenece al grupo B")
 
 
-
 def reto_if():
     """
     RETO IF
