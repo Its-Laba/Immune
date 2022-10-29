@@ -68,10 +68,10 @@ def ejer_5():
     a mayor.
     """
     num_ganadores = []
-    for i in range(5):
+    for i in range(6):
         num = int(input(f"Introduzca numero {i+1} ganador:\t"))
         num_ganadores.append(num)
-    num_ganadores.sort(reverse=True)
+    num_ganadores.sort()
     print(num_ganadores)
 
 
@@ -112,8 +112,9 @@ def ejer_7():
         catalogo.update({articulo: precio})
         articulo = input("Introduzca nombre del artículo a añadir: (FIN para finalizar)\t")
 
-    print("Lista de la compra:", end="\t")
-    print(*catalogo.keys(), sep=", ")
+    print("Lista de la compra:")
+    for art, valor in catalogo.items():
+        print(art, ": ", valor)
 
     print("Coste Total:\t", sum(catalogo.values()))
 
