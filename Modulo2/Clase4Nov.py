@@ -25,9 +25,9 @@ def c_f(grados):
 
 # Ejercicio 4:
 def letra_dni(dni):
-    letra = [[0, "T"], [1, "R"], [2, "W"], [3, "A"], [4, "G"], [5, "M"], [6,"Y"], [7, "F"],
-             [8, "P"], [9, "D"], [10, "X"],[11, "B"], [12, "N"], [13, "J"], [14, "Z"],
-             [15, "S"], [16, "Q"], [17, "V"], [18, "H"], [19, "L"], [20,"C"],[21, "K"], [22, "E"]]
+    letra = [[0, "T"], [1, "R"], [2, "W"], [3, "A"], [4, "G"], [5, "M"], [6, "Y"], [7, "F"],
+             [8, "P"], [9, "D"], [10, "X"], [11, "B"], [12, "N"], [13, "J"], [14, "Z"],
+             [15, "S"], [16, "Q"], [17, "V"], [18, "H"], [19, "L"], [20, "C"], [21, "K"], [22, "E"]]
     n_letra = dni % 23
     return letra[n_letra][1]
 
@@ -77,7 +77,7 @@ def valor_r(i):
 def cuota_mensual(hipoteca, years, impuesto):
     r = valor_r(impuesto)
     m = (hipoteca * r) / (1 - (1 + r)**(-12 * years))
-    return round(m,2)
+    return round(m, 2)
 
 
 # Ejercicio 10:
@@ -115,3 +115,142 @@ def precio_in(inmueble):
 
 
 # Ejercicio 11:
+def leer_fraccion():
+    numerador = int(input("Introduzca el numerador: "))
+    denominador = int(input("Introduzca el denominador: "))
+
+    return simplificar_fraccion((numerador, denominador))
+
+
+def intercambiar(a, b):
+    if a > b:
+        return a, b
+    else:
+        return b, a
+
+
+def escribir_fraccion(func):
+    num = func[0]
+    den = func[1]
+    if den == 1:
+        print(f"{num}")
+    else:
+        print(f"{num}/{den}")
+
+
+def calcular_mcd(a, b):
+    nums = intercambiar(a, b)
+    n1 = nums[0]
+    n2 = nums[1]
+
+    resto = n1 % n2
+    if resto == 0:
+        return n2
+
+    return calcular_mcd(n2, resto)
+
+
+def simplificar_fraccion(frac):
+    num = frac[0]
+    den = frac[1]
+    mcd = calcular_mcd(num, den)
+    while mcd != 1:
+        num = num//mcd
+        den = den//mcd
+        mcd = calcular_mcd(num, den)
+    return num, den
+
+
+def sumar_fracciones(frac1, frac2):
+    num1 = frac1[0]
+    den1 = frac1[1]
+    num2 = frac2[0]
+    den2 = frac2[1]
+
+    num = num1*den2 + num2*den1
+    den = den1*den2
+
+    return simplificar_fraccion((num, den))
+
+
+def restar_fracciones(frac1, frac2):
+    num1 = frac1[0]
+    den1 = frac1[1]
+    num2 = frac2[0]
+    den2 = frac2[1]
+
+    num = num1 * den2 - num2 * den1
+    den = den1 * den2
+
+    return simplificar_fraccion((num, den))
+
+
+def mult_fracciones(frac1, frac2):
+    num1 = frac1[0]
+    den1 = frac1[1]
+    num2 = frac2[0]
+    den2 = frac2[1]
+
+    num = num1 * num2
+    den = den1 * den2
+
+    return simplificar_fraccion((num, den))
+
+
+def div_fracciones(frac1, frac2):
+    num1 = frac1[0]
+    den1 = frac1[1]
+    num2 = frac2[0]
+    den2 = frac2[1]
+
+    num = num1 * den2
+    den = den1 * num2
+
+    return simplificar_fraccion((num, den))
+
+
+def menu():
+    print("MENU:")
+    print("""
+    OPCIONES:
+    1 - Sumar 2 fracciones
+    2 - Restar 2 fracciones
+    3 - Multiplicar 2 fracciones
+    4 - Dividir 2 fracciones
+    5 - Salir
+    """)
+    opcion = 1
+    while 0 < opcion < 5:
+        opcion = int(input("Introduzca opción: "))
+        if opcion == 1:
+            op1()
+        elif opcion == 2:
+            op2()
+        elif opcion == 3:
+            op3()
+        elif opcion == 4:
+            op4()
+
+
+def op1():
+    frac1 = leer_fraccion()
+    frac2 = leer_fraccion()
+    escribir_fraccion(sumar_fracciones(frac1, frac2))
+
+
+def op2():
+    frac1 = leer_fraccion()
+    frac2 = leer_fraccion()
+    escribir_fraccion(restar_fracciones(frac1, frac2))
+
+
+def op3():
+    frac1 = leer_fraccion()
+    frac2 = leer_fraccion()
+    escribir_fraccion(mult_fracciones(frac1, frac2))
+
+
+def op4():
+    frac1 = leer_fraccion()
+    frac2 = leer_fraccion()
+    escribir_fraccion(div_fracciones(frac1, frac2))
