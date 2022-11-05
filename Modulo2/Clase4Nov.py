@@ -85,8 +85,8 @@ def busca_inmueble(lista, precio):
     inmuebles = []
     for inmueble in lista:
         valor = precio_in(inmueble)
-        print(valor)
         if valor <= precio:
+            inmueble.update({'valor':valor})
             inmuebles.append(inmueble)
     return inmuebles
 
@@ -106,12 +106,12 @@ def precio_in(inmueble):
     else:
         return (metros * 1000 + habitaciones * 5000 + garaje * 15000) * (1 - antiguedad / 100) * 1.5
 
-#
-# print(busca_inmueble([{'año': 2000, 'metros': 100, 'habitaciones': 3, 'garaje': True, 'zona': 'A'},
-#                       {'año': 2012, 'metros': 60, 'habitaciones': 2, 'garaje': True, 'zona': 'B'},
-#                       {'año': 1980, 'metros': 120, 'habitaciones': 4, 'garaje': False, 'zona': 'A'},
-#                       {'año': 2005, 'metros': 75, 'habitaciones': 3, 'garaje': True, 'zona': 'B'},
-#                       {'año': 2015, 'metros': 90, 'habitaciones': 2, 'garaje': False, 'zona': 'A'}], 500000))
+
+print(busca_inmueble([{'año': 2000, 'metros': 100, 'habitaciones': 3, 'garaje': True, 'zona': 'A'},
+                      {'año': 2012, 'metros': 60, 'habitaciones': 2, 'garaje': True, 'zona': 'B'},
+                      {'año': 1980, 'metros': 120, 'habitaciones': 4, 'garaje': False, 'zona': 'A'},
+                      {'año': 2005, 'metros': 75, 'habitaciones': 3, 'garaje': True, 'zona': 'B'},
+                      {'año': 2015, 'metros': 90, 'habitaciones': 2, 'garaje': False, 'zona': 'A'}], 500000))
 
 
 # Ejercicio 11:
@@ -154,10 +154,8 @@ def simplificar_fraccion(frac):
     num = frac[0]
     den = frac[1]
     mcd = calcular_mcd(num, den)
-    while mcd != 1:
-        num = num//mcd
-        den = den//mcd
-        mcd = calcular_mcd(num, den)
+    num = num//mcd
+    den = den//mcd
     return num, den
 
 
@@ -254,3 +252,4 @@ def op4():
     frac1 = leer_fraccion()
     frac2 = leer_fraccion()
     escribir_fraccion(div_fracciones(frac1, frac2))
+
