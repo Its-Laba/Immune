@@ -1,0 +1,4 @@
+Album1:Bad,Hola,adsfadf,adsfadf,adsfadf
+Album2:Bad,asdfa,adsfadf,adsfadf,adsfadf
+Elim:Bad,asdfa,adsfadf,Hola,adsfadf
+Mod:Yo,fasdf,asdf,asdfs
