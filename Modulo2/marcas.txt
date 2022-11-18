@@ -1,0 +1,12 @@
+HE, Mango, 9958500
+Zara,Inditex, 87550000
+Mango,Mango,6542000
+Violeta,Mango,1558000
+Cortefiel,Tendam,3258600
+Bershka,Inditex,78900000
+Pull&Bear, Inditex,7540000
+Springfield, Tendam, 124990000
+Massimo Dutti, Inditex, 5490000
+Pepe Jeans, Pepe Jeans, 3459080
+Hackett, Pepe Jeans, 6872000
+Pedro del Hierro,Tendam,8356000
