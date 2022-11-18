@@ -1,4 +1,8 @@
-"""     Examen del 18 de Noviembre     """
+"""
+-----------------------Examen del 18 de Noviembre-----------------------------
+Para probar el código solo ejecuta la función correspondiente a cada ejercicio
+
+"""
 
 
 def ejercicio_1():
